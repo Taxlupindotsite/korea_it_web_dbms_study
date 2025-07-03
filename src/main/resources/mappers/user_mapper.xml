@@ -28,9 +28,32 @@
 
         where
             user_id = #{userID};
-
-
-
-
     </select>
+<!--  *3, 수정할거니까, 업데이트 있어야함-->
+        <update id="editUser">
+        update
+            user_tb
+        set
+            username = #{username},
+            email = #{email},
+            update_dt = now()
+        where
+            user_id = #{userId}
+<!-- 수정을 할건데, user_tb에서,
+     조건은 내가 준 user_id랑 일치해야하고,
+     그 항목에서 내가 새로 준 username과 email을 줄거고..
+     수정될거니 update_dt도 수정될 것임.
+     *4 -> 다음은 UserMapper(인터페이스)로
+     -->
+
+</update>
+    <delete id="removeUser">
+    delete from
+        user_tb
+    where
+        user_id = #{userId}
+
+    </delete>
+
+
 </mapper>
